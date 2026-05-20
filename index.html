@@ -1011,6 +1011,15 @@
   </div>
 
   <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    function scrollPageToTop() {
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+    }
+
+    window.addEventListener('load', scrollPageToTop);
+    window.addEventListener('pageshow', scrollPageToTop);
+
     const search = document.querySelector('#search');
     const filters = [...document.querySelectorAll('.filter')];
     const materialGrid = document.querySelector('#materialGrid');
